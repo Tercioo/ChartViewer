@@ -19,12 +19,12 @@ local plugin_version = "v2.90"
 
 local function CreatePluginFrames (data)
 
-	ChartViewerWindowFrame:SetBackdrop (_detalhes.PluginDefaults and _detalhes.PluginDefaults.Backdrop or {bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tile = true, tileSize = 16,
-	edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1,
-	insets = {left = 1, right = 1, top = 1, bottom = 1}})
-	ChartViewerWindowFrame:SetBackdropColor (unpack (_detalhes.PluginDefaults and _detalhes.PluginDefaults.BackdropColor or {0, 0, 0, .6}))
-	ChartViewerWindowFrame:SetBackdropBorderColor (unpack (_detalhes.PluginDefaults and _detalhes.PluginDefaults.BackdropBorderColor or {0, 0, 0, 1}))
-	
+--	ChartViewerWindowFrame:SetBackdrop (_detalhes.PluginDefaults and _detalhes.PluginDefaults.Backdrop or {bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tile = true, tileSize = 16,
+--	edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1,
+--	insets = {left = 1, right = 1, top = 1, bottom = 1}})
+--	ChartViewerWindowFrame:SetBackdropColor (unpack (_detalhes.PluginDefaults and _detalhes.PluginDefaults.BackdropColor or {0, 0, 0, .6}))
+--	ChartViewerWindowFrame:SetBackdropBorderColor (unpack (_detalhes.PluginDefaults and _detalhes.PluginDefaults.BackdropBorderColor or {0, 0, 0, 1}))
+
 	ChartViewerWindowFrame.bg1 = ChartViewerWindowFrame:CreateTexture (nil, "background")
 	ChartViewerWindowFrame.bg1:SetTexture ([[Interface\AddOns\Details\images\background]], true)
 	ChartViewerWindowFrame.bg1:SetAlpha (0.7)
@@ -587,7 +587,7 @@ end
 			local boss_id = combat.is_boss and combat.is_boss.id
 			
 			if (capture_name:find ("MULTICHARTS~") and tab_type == 1 and elapsed_time > 12) then --current
-				-- várias charts setadas no valor
+				-- vï¿½rias charts setadas no valor
 				local charts = {}
 				for key in capture_name:gsub ("MULTICHARTS~", ""):gmatch ("[^%~]+") do 
 					charts [key] = true
@@ -613,7 +613,7 @@ end
 			
 			elseif (capture_name:find ("PRESET_") and tab_type == 1 and elapsed_time > 12) then --current
 			
-				-- é um preset e precisa pegar todos os presets registrados no combate desse tipo
+				-- ï¿½ um preset e precisa pegar todos os presets registrados no combate desse tipo
 				local i = 1
 				for name, t in pairs (combat.TimeData) do
 					if (name:find (capture_name) and t.max_value and t.max_value > 0) then
@@ -861,7 +861,7 @@ end
 
 local create_segment_dropdown = function()
 
-	local statusbar_background = CreateFrame ("frame", nil, ChartViewerWindowFrame)
+	local statusbar_background = CreateFrame ("frame", nil, ChartViewerWindowFrame, "BackdropTemplate")
 	statusbar_background:SetPoint ("bottomleft", ChartViewerWindowFrame, "bottomleft")
 	statusbar_background:SetPoint ("bottomright", ChartViewerWindowFrame, "bottomright")
 	statusbar_background:SetHeight (30)
@@ -927,11 +927,11 @@ end
 
 --<
 local create_delete_button = function (f, name)
-	local frame = CreateFrame ("frame", "ChartViewerDeleteButton" .. (name or math.random (1, 100000)), f)
+	local frame = CreateFrame ("frame", "ChartViewerDeleteButton" .. (name or math.random (1, 100000)), f, "BackdropTemplate")
 	frame:SetPoint ("topleft", f, "topleft", 10, -10)
 	frame:SetBackdrop ({bgFile = [[Interface\AddOns\Details\images\background]], edgeFile = "Interface\\Buttons\\UI-SliderBar-Border", edgeSize = 8})
 	
-	local delete_button = CreateFrame ("button", nil, frame)
+	local delete_button = CreateFrame ("button", nil, frame, "BackdropTemplate")
 	delete_button:SetPoint ("topleft", frame, "topleft")
 	delete_button:SetPoint ("bottomright", frame, "bottomright")
 	delete_button:SetScript ("OnClick", function()
@@ -966,7 +966,7 @@ local create_add_tab_panel = function()
 	
 	Details:FormatBackground (panel)
 	
-	local titlebar = CreateFrame ("frame", nil, panel.widget)
+	local titlebar = CreateFrame ("frame", nil, panel.widget, "BackdropTemplate")
 	titlebar:SetPoint ("topleft", panel.widget, "topleft", 2, -3)
 	titlebar:SetPoint ("topright", panel.widget, "topright", -2, -3)
 	titlebar:SetHeight (20)
@@ -1212,7 +1212,7 @@ function ChartViewer:OnEvent (_, event, ...)
 				-- /run DETAILS_PLUGIN_CHART_VIEWER:ShowButton()
 				if (not saveddata.tabs) then
 					--> first run
-					local welcome = CreateFrame ("frame", nil, ChartViewerFrame)
+					local welcome = CreateFrame ("frame", nil, ChartViewerFrame, "BackdropTemplate")
 					welcome:SetFrameStrata ("TOOLTIP")
 					welcome:SetPoint ("center", ChartViewerFrame, "center")
 					welcome:SetSize (300, 150)
@@ -1297,12 +1297,12 @@ function ChartViewer:OnEvent (_, event, ...)
 					local height = ChartViewerWindowFrame:GetHeight()
 					ChartViewerWindowFrameChartFrame:SetSize (ChartViewerWindowFrame:GetWidth()-20, height-100)
 				
-					ChartViewerWindowFrame:SetBackdrop ({edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1, bgFile = [[Interface\AddOns\Details\images\background]], tileSize = 64, tile = true})
-					ChartViewerWindowFrame:SetBackdropColor (0.2, 0.2, 0.2, .6)
-					ChartViewerWindowFrame:SetBackdropBorderColor (0, 0, 0, 1)
+					--ChartViewerWindowFrame:SetBackdrop ({edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1, bgFile = [[Interface\AddOns\Details\images\background]], tileSize = 64, tile = true})
+					--ChartViewerWindowFrame:SetBackdropColor (0.2, 0.2, 0.2, .6)
+					--ChartViewerWindowFrame:SetBackdropBorderColor (0, 0, 0, 1)
 					
 				--title bar
-					local titlebar = CreateFrame ("frame", nil, ChartViewerWindowFrame)
+					local titlebar = CreateFrame ("frame", nil, ChartViewerWindowFrame, "BackdropTemplate")
 					titlebar:SetPoint ("topleft", ChartViewerWindowFrame, "topleft", 2, -3)
 					titlebar:SetPoint ("topright", ChartViewerWindowFrame, "topright", -2, -3)
 					titlebar:SetHeight (20)
