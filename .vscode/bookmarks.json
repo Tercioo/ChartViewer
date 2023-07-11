@@ -1,0 +1,39 @@
+{
+	"files": [
+		{
+			"path": "Details_ChartViewer.lua",
+			"bookmarks": [
+				{
+					"line": 60,
+					"column": 90,
+					"label": ""
+				},
+				{
+					"line": 472,
+					"column": 5,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "frames_tabs.lua",
+			"bookmarks": [
+				{
+					"line": 280,
+					"column": 86,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "frames.lua",
+			"bookmarks": [
+				{
+					"line": 103,
+					"column": 10,
+					"label": ""
+				}
+			]
+		}
+	]
+}
