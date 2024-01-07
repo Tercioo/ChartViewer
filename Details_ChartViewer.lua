@@ -456,7 +456,9 @@ function ChartViewer:OnEvent(_, event, ...)
 				Details:RegisterEvent(ChartViewer, "COMBAT_CHARTTABLES_CREATING")
 				Details:RegisterEvent(ChartViewer, "COMBAT_CHARTTABLES_CREATED")
 
-				ChartViewer.CreateSegmentDropdown()
+				C_Timer.After(5, function()
+					ChartViewer.CreateSegmentDropdown()
+				end)
 				ChartViewer.CreateAddTabPanel()
 				ChartViewer.CreateAddTabButton()
 
