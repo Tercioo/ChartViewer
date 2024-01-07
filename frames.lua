@@ -92,8 +92,6 @@ function ChartViewer.CreateSegmentDropdown()
 		local segmentsTable = Details:GetCombatSegments()
 		local result = {}
 
-		--ChartViewerDB.chartData[combatUniquieID][ChartName] = chartData
-
 		for index, combatObject in ipairs(segmentsTable) do
 			local combatUniquieID = combatObject:GetCombatUID()
 			local charts = ChartViewerDB.chartData[combatUniquieID]
@@ -101,8 +99,6 @@ function ChartViewer.CreateSegmentDropdown()
 			if (charts) then
 				if (combatObject.is_boss and combatObject.is_boss.index) then
 					local bossIcon = Details:GetBossEncounterTexture(combatObject.is_boss.name)
-					--print(bossIcon, combatObject.is_boss.name)
-					local l, r, t, b, icon = ChartViewer:GetBossIcon(combatObject.is_boss.mapid, combatObject.is_boss.index)
 					result[#result+1] = {value = index, label = "#" .. index .. " " .. combatObject.is_boss.name, icon = bossIcon, iconsize = {32, 20}, texcoord = {0, 1, 0, 0.9}, onclick = onSelectSegment}
 				else
 					result[#result+1] = {value = index, label = "#" .. index .. " " .. (combatObject.enemy or "unknown"), icon = [[Interface\Buttons\UI-GuildButton-PublicNote-Up]], onclick = onSelectSegment}
