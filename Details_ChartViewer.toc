@@ -3,6 +3,7 @@
 ## Notes: Plugin for Details
 ## RequiredDeps: Details
 ## SavedVariablesPerCharacter: ChartViewerDB
+## IconTexture: Interface\AddOns\Details\images\minimap
 
 ## X-Curse-Project-ID: 79620
 ## X-Wago-ID: RaN0oaGj
